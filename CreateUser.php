@@ -19,7 +19,7 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 	if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 		echo "Sie sind nicht eingeloggt!<br><a href='/Project/Login.php?previous=" . $_SERVER['PHP_SELF'] . "'>Login</a>";
 	} else {
-		if (!(preg_match("/^[a-zA-Z]/", $_POST['Customer']) == 1)) {
+		if (!(preg_match("/^[a-zA-Z]/", $_POST['Username']) == 1)) {
 			echo "Benutzername muss mit Buchstaben anfangen!<br>";
 			$Error++;
 		}
