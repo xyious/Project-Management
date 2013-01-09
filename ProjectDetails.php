@@ -34,6 +34,6 @@ for ($i = 0; $i < $query->rowCount(); $i++)
 ?>
 </table>
 <br>
-<?php include "include/CreateWorkUnitForm.php"
+<?php include "include/CreateWorkUnitForm.php" ?>
 </body>
 </html>
