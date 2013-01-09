@@ -27,7 +27,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 {
 	$row = $workunit_query->fetch();
 	echo "<tr><td>" . $row['creation'] . "</td>";
-	echo "<td><a href='ProjectDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
+	echo "<td><a href='WUDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
 	echo "<td>FIX ME</td>";
 	echo "<td>" . $row['deadline'] . "</td></tr>";
 }
