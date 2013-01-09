@@ -28,7 +28,7 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 			$Error++;
 		}
 		if ($Error == 0) {
-			$Password = create_hash($_POST['Password'], $_POST['Username'])
+			$Password = create_hash($_POST['Password'], $_POST['Username']);
 			$query = $connection->prepare("INSERT INTO users (username, displayname, email, password) VALUES (:username, :displayname, :email, :password)");
 			$query->bindParam(':username', $_POST['Username'], PDO::PARAM_STR);
 			$query->bindParam(':displayname', $_POST['Displayname'], PDO::PARAM_STR);
