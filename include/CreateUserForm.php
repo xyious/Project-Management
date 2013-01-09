@@ -1,3 +1,4 @@
+<h1>Neuen Benutzer Anlegen:</h1>
 <form id='CreateUser' action='/Project/CreateUser.php' method='post' accept-charset='UTF-8'>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
