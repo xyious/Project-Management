@@ -11,7 +11,7 @@ if (!isset($_SESSION['Logged_In'])) { $_SESSION['Logged_In'] = 0; }
 <body>
 <?php
 include "include/PDOConnect.php";
-include "include/PBKDF2.php";
+include "include/pbkdf2.php";
 
 $Error = 1;
 if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
