@@ -5,7 +5,7 @@ if (!isset($_SESSION['Logged_In'])) { $_SESSION['Logged_In'] = 0; }
 ?>
 <!doctype html>
 <head>
-<title>Neues Projekt Erstellen</title>
+<title>Neues Arbeitspaket Erstellen</title>
 <link rel="stylesheet" href="include/body.css" type="text/css">
 </head>
 <body>
