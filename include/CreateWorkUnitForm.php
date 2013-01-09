@@ -1,4 +1,4 @@
-<form id='CreateProject' action='/Project/CreateWorkUnit.php' method='post' accept-charset='UTF-8'>
+<form id='CreateWorkUnit' action='/Project/CreateWorkUnit.php' method='post' accept-charset='UTF-8'>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 <input type='hidden' name='Project_ID' id='Project_ID' value='$_GET["Project_ID"]'/>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
