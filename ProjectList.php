@@ -25,7 +25,7 @@ for ($i = 0; $i < $query->rowCount(); $i++)
 {
 	$row = $query->fetch();
 	echo "<tr><td>" . $row['creation'] . "</td>";
-	echo "<td>" . $row['description'] . "</td>";
+	echo "<td><a href='ProjectDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
 	echo "<td>FIX ME</td>";
 	echo "<td>" . $row['deadline'] . "</td></tr>";
 }
