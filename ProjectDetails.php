@@ -23,9 +23,9 @@ include "include/PDOConnect.php";
 $workunit_query = $connection->prepare("SELECT * FROM workunits");
 $assignment_query = $connection->prepare("SELECT * FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID WHERE workunits.ID = :workunit_id AND worker_assignment.job = 3");
 $workunit_query->execute();
-for ($i = 0; $i < $query->rowCount(); $i++)
+for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 {
-	$row = $query->fetch();
+	$row = $workunit_query->fetch();
 	echo "<tr><td>" . $row['creation'] . "</td>";
 	echo "<td><a href='ProjectDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
 	echo "<td>FIX ME</td>";
