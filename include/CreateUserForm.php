@@ -9,7 +9,7 @@
   <tr><td><label for='Email'>Email:</label></td>
       <td><input type='text' name='Email' id='Email'  maxlength="50" /></td></tr>
   <tr><td><label for='Password'>Passwort:</label></td>
-      <td><input type='text' name='Password' id='Password'  maxlength="50" /></td></tr>
+      <td><input type='password' name='Password' id='Password'  maxlength="50" /></td></tr>
     <tr><td>&nbsp;</td><td><input type='submit' name='Submit' value='Submit' /></td>
   </tr>
 </form>
