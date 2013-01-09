@@ -36,7 +36,7 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 			$query->bindParam(':password', $Password, PDO::PARAM_STR);
 			$query->execute();
 			if ($connection->lastInsertId() > 0) {
-				echo "Projekt wurde erstellt, Kunde: " . $_POST['Customer'] . "<br>Beschreibung: " . $_POST['ProjectDescription'] . "<br>Termin: " . $_POST['ProjectDeadline'] . "<br>";
+				echo "Benutzer wurde erstellt, Name: " . $_POST['Displayname'] . "<br>Benutzername: " . $_POST['Usernrame'] . "<br>Passwort Hash: " . $Password . "<br>";
 			}
 		}
 	}
