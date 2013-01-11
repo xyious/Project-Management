@@ -1,5 +1,5 @@
 <?php
-include('include/PDOConnect.php');
+include('../include/PDOConnect.php');
 $table = 'WU_status';
 $success = $connection->query("CREATE TABLE IF NOT EXISTS $table (ID INT AUTO_INCREMENT PRIMARY KEY, description TEXT)");
 if ($success) {
