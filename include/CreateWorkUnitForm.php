@@ -12,10 +12,10 @@ $query=$connection->prepare("Select ID, displayname FROM users");
 for ($i = 0; $i < $query->rowCount(); $i++)
 {
   $row = $query->fetch();
-  echo('<option value="' . $row['ID'] . '">' . $row['displayname'] . '</option>');
+  echo "<option value=\"" . $row['ID'] . "\">" . $row['displayname'] . "</option>";
 }
 ?>
-      <input type='text' name='Responsible' id='Responsible'  maxlength="50" /></td></tr>
+      </select></td></tr>
   <tr><td><label for='WUDeadline'>Termin:</label></td>
       <td><input type='date' name='WUDeadline' id='WUDeadline'  maxlength="50" /></td></tr>
   <tr><td><label for='Estimate'>Voraussichtlicher Aufwand (Stunden):</label></td>
