@@ -7,10 +7,12 @@
   <tr><td><label for='Responsible'>Arbeitspaket Verantwortlicher:</label></td>
       <td><select name="Responsible" multiple>
 <?php 
+echo "test";
 include "PDOConnect.php";
 $query=$connection->prepare("Select ID, displayname FROM users");
 for ($i = 0; $i < $query->rowCount(); $i++)
 {
+  echo "test1";
   $row = $query->fetch();
   echo "<option value=\"" . $row['ID'] . "\">" . $row['displayname'] . "</option>";
 }
