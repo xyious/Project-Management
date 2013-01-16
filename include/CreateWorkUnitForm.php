@@ -9,7 +9,7 @@
 <?php 
 include "PDOConnect.php";
 $query=$connection->prepare("Select ID, displayname FROM users");
-for ($i = 0; $i < $query->numRows(); $i++)
+for ($i = 0; $i < $query->rowCount(); $i++)
 {
  echo('<option value="' . $row['ID'] . '">' . $row['displayname'] . '</option>');
 }
