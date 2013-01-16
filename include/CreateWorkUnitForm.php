@@ -5,7 +5,7 @@
   <tr><td><label for='WUDescription'>Arbeitspaketbeschreibung:</label></td>
       <td><textarea Cols="100" rows="25" name='WUDescription' id='WUDescription'></textarea></td></tr>
   <tr><td><label for='Responsible'>Arbeitspaket Verantwortlicher:</label></td>
-      <td><select name="Responsible" multiple>$$SelectList
+      <td><select name="Responsible" multiple>||SelectList
       </select></td></tr>
   <tr><td><label for='WUDeadline'>Termin:</label></td>
       <td><input type='date' name='WUDeadline' id='WUDeadline'  maxlength="50" /></td></tr>
