@@ -4,6 +4,17 @@
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
   <tr><td><label for='WUDescription'>Arbeitspaketbeschreibung:</label></td>
       <td><textarea Cols="100" rows="25" name='WUDescription' id='WUDescription'></textarea></td></tr>
+  <tr><td><label for='Responsible'>Arbeitspaket Verantwortlicher:</label></td>
+      <td><select name="Responsible" multiple>
+<?php 
+include "PDOConnect.php";
+$query=$connection->prepare("Select ID, displayname FROM users");
+for ($i = 0; $i < $query->numRows(); $i++)
+{
+ echo('<option value="' . $row['ID'] . '">' . $row['displayname'] . '</option>');
+}
+?>
+      <input type='text' name='Responsible' id='Responsible'  maxlength="50" /></td></tr>
   <tr><td><label for='WUDeadline'>Termin:</label></td>
       <td><input type='date' name='WUDeadline' id='WUDeadline'  maxlength="50" /></td></tr>
   <tr><td><label for='Estimate'>Voraussichtlicher Aufwand (Stunden):</label></td>
