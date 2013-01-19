@@ -41,7 +41,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
   <tr><td><label for='WUDescription'>Arbeitspaketbeschreibung:</label></td>
       <td><textarea Cols="100" rows="25" name='WUDescription' id='WUDescription'></textarea></td></tr>
   <tr><td><label for='Responsible'>Arbeitspaket Verantwortlicher:</label></td>
-      <td><select name="Responsible" multiple>
+      <td><select name="Responsible" multiple size="1">
 <?php
 $user_query = $connection->prepare("Select ID, displayname FROM users");
 $user_query->execute();
