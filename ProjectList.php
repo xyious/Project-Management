@@ -1,7 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION['IP']) {
-	$_SESSION['IP'] = $_SERVER['REMOTE_ADDR']; }
+if (!isset($_SESSION['IP'])) {	$_SESSION['IP'] = $_SERVER['REMOTE_ADDR']; $_SESSION['Logged_In'] = 0;}
 ?>
 <!doctype html>
 <html>
