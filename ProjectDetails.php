@@ -54,7 +54,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
   <tr><td><label for='Responsible'>Arbeitspaket Verantwortlicher:</label></td>
       <td><select name="Responsible" multiple size="1">
 <?php
-for ($i = 0; $i < count($users); $i++)
+for ($i = 1; $i < count($users) + 1; $i++)
 {
 	echo "<option value=\"" . $i . "\">" . $users[$i] . "</option>";
 }
