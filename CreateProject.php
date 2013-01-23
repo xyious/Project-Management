@@ -32,8 +32,21 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 			$query->bindParam(':customer', $_POST['Customer'], PDO::PARAM_STR);
 			$query->bindParam(':description', $_POST['ProjectDescription'], PDO::PARAM_STR);
 			$query->execute();
-			if ($connection->lastInsertId() > 0) {
-				echo "Projekt wurde erstellt, Kunde: " . $_POST['Customer'] . "<br>Beschreibung: " . $_POST['ProjectDescription'] . "<br>Termin: " . $_POST['ProjectDeadline'] . "<br>";
+			$Project_ID = $connection->lastInsertId();
+			if ($Project_ID > 0) {
+				query = $connection->prepare("INSERT INTO workunits (project_id, deadline, description, estimated_hours, status, type) VALUES (:project_id, :deadline, 'Projektleitung', 1, -1, 1)");
+				$query->bindParam(':project_id', $Project_ID, PDO::PARAM_STR);
+				$query->bindParam(':deadline', $_POST['ProjectDeadline'], PDO::PARAM_STR);
+				$query->execute();
+				$WUID = $connection->lastInsertId();
+				if ($WUID > 0) {
+					$query = $connection->prepare("INSERT INTO worker_assignment (user_ID, workunit_ID, project_ID, job) VALUES (:user_id, :workunit_id, :project_id, 3)");
+					$query->bindParam(':user_id', $_POST['Responsible'], PDO::PARAM_STR);
+					$query->bindParam(':workunit_id', $WUID, PDO::PARAM_STR);
+					$query->bindParam(':project_id', $_POST['Project_ID'], PDO::PARAM_STR);
+					$query->execute();
+					echo "Projekt wurde erstellt, Kunde: " . $_POST['Customer'] . "<br>Beschreibung: " . $_POST['ProjectDescription'] . "<br>Termin: " . $_POST['ProjectDeadline'] . "<br>";
+				}
 			}
 		}
 	}
