@@ -14,7 +14,7 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
  	echo "Sie sind nicht eingeloggt!<br><a href='/Project/Login.php?previous=" . $_SERVER['PHP_SELF'] . "'>Login</a>";
 } else {
 	echo "<h2>Projektliste:</h2>";
-	echo "<table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">";
+	echo "<table rules=\"all\" border=\"1px\" style=\"width: 100%; border-color: #FFFFFF\">";
   	echo "<tr>";
     	echo "<th>Erstellungsdatum</th>";
     	echo "<th>Beschreibung</th>";
@@ -48,20 +48,20 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 	echo "<h2>Neues Project erstellen:</h2><br>";
 	echo "<form id='CreateProject' action='/Project/CreateProject.php' method='post' accept-charset='UTF-8'>";
 	echo "<input type='hidden' name='submitted' id='submitted' value='1'/>";
-	echo "<table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">";
+	echo "<table rules=\"all\" border=\"1px\" style=\"width: 100%; border-color: #FFFFFF\">";
   	echo "<tr><td><label for='Customer'>Kunde:</label></t:>";
-      	echo "<td><textarea Cols="100" rows="5" name='Customer' id='Customer'></textarea></td></tr>";
+      	echo "<td><textarea Cols=\"100\" rows=\"5\" name='Customer' id='Customer'></textarea></td></tr>";
   	echo "<tr><td><label for='ProjectDescription'>Projektbeschreibung:</label></t:>";
-      	echo "<td><textarea Cols="100" rows="25" name='ProjectDescription' id='ProjectDescription'></textarea></td></tr>";
+      	echo "<td><textarea Cols=\"100\" rows=\"25\" name='ProjectDescription' id='ProjectDescription'></textarea></td></tr>";
        	echo "<tr><td><label for='Responsible'>Projektverantwortlicher:</label></td>";
-  	echo "<td><select multiple name="Responsible" size="1">";
+  	echo "<td><select multiple name=\"Responsible\" size=\"1\">";
 	for ($i = 1; $i < count($users) + 1; $i++)
 	{
 		echo "<option value=\"" . $i . "\">" . $users[$i] . "</option>";
 	}
 	echo "</select></td></tr>";
   	echo "<tr><td><label for='ProjectDeadline'>Termin:</label></t:>";
-      	echo "<td><input type='date' name='ProjectDeadline' id='ProjectDeadline'  maxlength="50" /></td></tr>";
+      	echo "<td><input type='date' name='ProjectDeadline' id='ProjectDeadline'  maxlength=\"50\" /></td></tr>";
     	echo "<tr><td>&nbsp;</td><td><input type='submit' name='Submit' value='Submit' /></td>";
   	echo "</tr>";
 	echo "</form>";
