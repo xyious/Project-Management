@@ -55,7 +55,7 @@ for ($i = 0; $i < $query->rowCount(); $i++)
         <tr><td><label for='Responsible'>Projektverantwortlicher:</label></td>
   <td><select multiple name="Responsible" size="1">
 <?php
-for ($i = 0; $i < count($users); $i++)
+for ($i = 1; $i < count($users) + 1; $i++)
 {
 	echo "<option value=\"" . $i . "\">" . $users[$i] . "</option>";
 }
