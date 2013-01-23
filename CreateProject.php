@@ -43,7 +43,7 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 					$query = $connection->prepare("INSERT INTO worker_assignment (user_ID, workunit_ID, project_ID, job) VALUES (:user_id, :workunit_id, :project_id, 3)");
 					$query->bindParam(':user_id', $_POST['Responsible'], PDO::PARAM_STR);
 					$query->bindParam(':workunit_id', $WUID, PDO::PARAM_STR);
-					$query->bindParam(':project_id', $_POST['Project_ID'], PDO::PARAM_STR);
+					$query->bindParam(':project_id', $Project_ID, PDO::PARAM_STR);
 					$query->execute();
 					echo "Projekt wurde erstellt, Kunde: " . $_POST['Customer'] . "<br>Beschreibung: " . $_POST['ProjectDescription'] . "<br>Termin: " . $_POST['ProjectDeadline'] . "<br>";
 				}
