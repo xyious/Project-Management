@@ -34,7 +34,7 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 			$query->execute();
 			$Project_ID = $connection->lastInsertId();
 			if ($Project_ID > 0) {
-				query = $connection->prepare("INSERT INTO workunits (project_id, deadline, description, estimated_hours, status, type) VALUES (:project_id, :deadline, 'Projektleitung', 1, -1, 1)");
+				$query = $connection->prepare("INSERT INTO workunits (project_id, deadline, description, estimated_hours, status, type) VALUES (:project_id, :deadline, 'Projektleitung', 1, -1, 1)");
 				$query->bindParam(':project_id', $Project_ID, PDO::PARAM_STR);
 				$query->bindParam(':deadline', $_POST['ProjectDeadline'], PDO::PARAM_STR);
 				$query->execute();
