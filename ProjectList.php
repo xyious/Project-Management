@@ -20,6 +20,12 @@ if (!$_SESSION['IP']) {
   </tr>
 <?php
 include "include/PDOConnect.php";
+$users = array();
+for ($i = 0; $i < $user_query->rowCount(); $i++)
+{
+	$row = $user_query->fetch();
+	$users[$row['ID']] = $row['displayname'];
+}
 $query = $connection->prepare("SELECT * FROM project");
 $query->execute();
 $assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.project_ID = :project_id AND workunits.type = 2");
@@ -47,12 +53,9 @@ for ($i = 0; $i < $query->rowCount(); $i++)
         <tr><td><label for='Responsible'>Projektverantwortlicher:</label></td>
   <td><select multiple name="Responsible" size="1">
 <?php
-$user_query = $connection->prepare("Select ID, displayname FROM users");
-$user_query->execute();
-for ($i = 0; $i < $user_query->rowCount(); $i++)
+for ($i = 0; $i < count($users); $i++)
 {
-	$row = $user_query->fetch();
-	echo "<option value=\"" . $row['ID'] . "\">" . $row['displayname'] . "</option>";
+	echo "<option value=\"" . $i . "\">" . $users[$i] . "</option>";
 }
 ?>
       </select></td></tr>
