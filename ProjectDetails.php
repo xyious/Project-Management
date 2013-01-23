@@ -25,7 +25,6 @@ $users = array();
 for ($i = 0; $i < $user_query->rowCount(); $i++)
 {
 	$row = $user_query->fetch();
-//	$users = [$row['ID']] => $row['displayname'];
 	$users[$row['ID']] = $row['displayname'];
 }
 $workunit_query = $connection->prepare("SELECT * FROM workunits WHERE project_ID = :project_id");
@@ -57,8 +56,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 <?php
 for ($i = 0; $i < $users->count(); $i++)
 {
-	$row = $user_query->fetch();
-	echo "<option value=\"" . $row['ID'] . "\">" . $row['displayname'] . "</option>";
+	echo "<option value=\"" . $i . "\">" . $users[$i] . "</option>";
 }
 ?>
       </select></td></tr>
