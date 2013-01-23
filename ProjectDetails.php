@@ -28,7 +28,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 	$row = $workunit_query->fetch();
 	$assignment_query->bindParam(':workunit_id', $row['ID'], PDO::PARAM_STR);
 	$assignment_query->execute();
-	$assignment_row = $assagnment_query->fetch();
+	$assignment_row = $assignment_query->fetch();
 	echo "<tr><td>" . $row['creation'] . "</td>";
 	echo "<td><a href='WUDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
 	echo "<td>" . $assignment_row['displayname'] . "</td>";
