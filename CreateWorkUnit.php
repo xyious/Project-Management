@@ -33,14 +33,16 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 			$query->bindParam(':description', $_POST['WUDescription'], PDO::PARAM_STR);
 			$query->bindParam(':estimate', $_POST['Estimate'], PDO::PARAM_STR);
 			$query->execute();
-			if ($connection->lastInsertId() > 0) {
+			$WUID = $connection->lastInsertId();
+			if ($WUID > 0) {
+				$query = $connection->prepare("INSERT INTO worker_assignment (user_ID, workunit_ID, project_ID, job) VALUES (:user_id, :workunit_id, :project_id, 3)");
+				$query->bindParam(':user_id', $_POST['Responsible'], PDO::PARAM_STR);
+				$query->bindParam(':workunit_id', $WUID, PDO::PARAM_STR);
+				$query->bindParam(':project_id', $_POST['Project_ID'], PDO::PARAM_STR);
 				echo "Arbeitspaket wurde erstellt, Project ID: " . $_POST['Project_ID'] . "<br>Beschreibung: " . $_POST['WUDescription'] . "<br>Termin: " . $_POST['WUDeadline'] . "<br>";
 			}
 		}
 	}
-}
-if ($Error > 0) {
-	include "include/CreateWorkUnitForm.php";
 }
 ?>
 </body>
