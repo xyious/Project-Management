@@ -22,7 +22,13 @@ if (!$_SESSION['IP']) {
 include "include/PDOConnect.php";
 $user_query = $connection->prepare("Select ID, displayname FROM users");
 $user_query->execute();
-$userlist = list($id, $displayname);
+$users[];
+for ($i = 0; $i < $user_query->rowCount(); $i++)
+{
+	$row = $user_query->fetch();
+	$users[$i][0] = $row['ID'];
+	$users[$i][1] = $row['displayname'];
+}
 while (userlist($id, $displayname) = mysql_fetch_row($result));
 $workunit_query = $connection->prepare("SELECT * FROM workunits WHERE project_ID = :project_id");
 $workunit_query->bindParam(':project_id', $_GET['id'], PDO::PARAM_STR);
@@ -51,7 +57,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
   <tr><td><label for='Responsible'>Arbeitspaket Verantwortlicher:</label></td>
       <td><select name="Responsible" multiple size="1">
 <?php
-for ($i = 0; $i < $user_query->rowCount(); $i++)
+for ($i = 0; $i < $users->count(); $i++)
 {
 	$row = $user_query->fetch();
 	echo "<option value=\"" . $row['ID'] . "\">" . $row['displayname'] . "</option>";
