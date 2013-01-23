@@ -22,7 +22,6 @@ if (!$_SESSION['IP']) {
 include "include/PDOConnect.php";
 $user_query = $connection->prepare("Select ID, displayname FROM users");
 $user_query->execute();
-$users[];
 for ($i = 0; $i < $user_query->rowCount(); $i++)
 {
 	$row = $user_query->fetch();
