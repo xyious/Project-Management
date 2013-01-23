@@ -30,7 +30,7 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 		$row = $query->fetch();
 		$users[$row['ID']] = $row['displayname'];
 	}
-	$query = $connection->prepare("SELECT project.* FROM project INNER JOIN worker_assignment worker_assignment.project_ID WHERE worker_assignment.user_ID = " . $_SESSION['user_id']);
+	$query = $connection->prepare("SELECT project.creation, project.ID, project.description, project.deadline FROM project INNER JOIN worker_assignment worker_assignment.project_ID WHERE worker_assignment.user_ID = " . $_SESSION['user_id']);
 	var_dump($query);
 	$query->execute();
 	$assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.project_ID = :project_id AND workunits.type = 2");
