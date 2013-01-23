@@ -36,7 +36,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 <br>
 <form id='CreateWorkUnit' action='/Project/CreateWorkUnit.php' method='post' accept-charset='UTF-8'>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
-<input type='hidden' name='Project_ID' id='Project_ID' value=<?php echo "'" . $_GET["Project_ID"] . "'"; ?>/>
+<input type='hidden' name='Project_ID' id='Project_ID' value=<?php echo "'" . $_GET["id"] . "'"; ?>/>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
   <tr><td><label for='WUDescription'>Arbeitspaketbeschreibung:</label></td>
       <td><textarea Cols="100" rows="25" name='WUDescription' id='WUDescription'></textarea></td></tr>
