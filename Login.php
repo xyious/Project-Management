@@ -12,7 +12,7 @@ if (!isset($_SESSION['Logged_In'])) { $_SESSION['Logged_In'] = 0; }
 <?php
 include "include/PDOConnect.php";
 include "include/pbkdf2.php";
-
+$NeedLogin = 0;
 if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 	$NeedLogin = 1;
 	if ($_POST['username']) {
