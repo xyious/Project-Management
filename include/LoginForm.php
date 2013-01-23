@@ -1,4 +1,4 @@
-<form id='login' action=<?php echo "'" . $_SERVER['QUERY_STRING']. "'"; ?> method='post' accept-charset='UTF-8'>
+<form id='login' action=<?php echo "'/Project/Login.php?" . $_SERVER['QUERY_STRING']. "'"; ?> method='post' accept-charset='UTF-8'>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 <input type='hidden' name='previous' id='previous' value=<?php echo "'" . $_GET['previous']. "'"; ?>/>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
