@@ -45,7 +45,7 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 		echo "<td>" . $row['deadline'] . "</td></tr>";
 	}
 	echo "</table><br>";
-	echo "<h2>Neues Project erstellen:</h2><br>";
+	echo "<h2>Neues Projekt erstellen:</h2><br>";
 	echo "<form id='CreateProject' action='/Project/CreateProject.php' method='post' accept-charset='UTF-8'>";
 	echo "<input type='hidden' name='submitted' id='submitted' value='1'/>";
 	echo "<table rules=\"all\" border=\"1px\" style=\"width: 100%; border-color: #FFFFFF\">";
