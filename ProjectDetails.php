@@ -9,7 +9,7 @@ if (!isset($_SESSION['IP'])) {	$_SESSION['IP'] = $_SERVER['REMOTE_ADDR']; $_SESS
 <link rel="stylesheet" href="include/body.css" type="text/css">
 </head>
 <body>
-<h1>Arbeitspakete:</h1>
+<h2>Arbeitspakete:</h2>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
   <tr>
     <th>Erstellungsdatum</th>
@@ -45,6 +45,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 ?>
 </table>
 <br>
+<h2>Arbeitspakete erstellen:</h2>
 <form id='CreateWorkUnit' action='/Project/CreateWorkUnit.php' method='post' accept-charset='UTF-8'>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 <input type='hidden' name='Project_ID' id='Project_ID' value=<?php echo "'" . $_GET["id"] . "'"; ?>/>
