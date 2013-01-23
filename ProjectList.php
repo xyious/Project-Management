@@ -22,12 +22,17 @@ if (!$_SESSION['IP']) {
 include "include/PDOConnect.php";
 $query = $connection->prepare("SELECT * FROM project");
 $query->execute();
+$assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.project_ID = :project_id AND workunits.type = 2");
+$workunit_query->execute();
 for ($i = 0; $i < $query->rowCount(); $i++)
 {
 	$row = $query->fetch();
+	$assignment_query->bindParam(':project_id', $row['ID'], PDO::PARAM_STR);
+	$assignment_query->execute();
+	$assignment_row = $assignment_query->fetch();
 	echo "<tr><td>" . $row['creation'] . "</td>";
 	echo "<td><a href='ProjectDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
-	echo "<td>FIX ME</td>";
+	echo "<td>" . $assignment_row['displayname'] ."</td>";
 	echo "<td>" . $row['deadline'] . "</td></tr>";
 }
 ?>
