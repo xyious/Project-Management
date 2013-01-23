@@ -26,7 +26,7 @@ $users;
 for ($i = 0; $i < $user_query->rowCount(); $i++)
 {
 	$row = $user_query->fetch();
-	$users[$row['ID'] => $row['displayname'];
+	$users[$row['ID']] => $row['displayname'];
 }
 $workunit_query = $connection->prepare("SELECT * FROM workunits WHERE project_ID = :project_id");
 $workunit_query->bindParam(':project_id', $_GET['id'], PDO::PARAM_STR);
