@@ -43,7 +43,7 @@ for ($i = 0; $i < $query->rowCount(); $i++)
 }
 ?>
 </table><br>
-<h2>Neues Project erstellen:</h2><br>
+<h2>Neues Projekt erstellen:</h2><br>
 <form id='CreateProject' action='/Project/CreateProject.php' method='post' accept-charset='UTF-8'>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
