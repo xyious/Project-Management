@@ -39,6 +39,7 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 				$query->bindParam(':user_id', $_POST['Responsible'], PDO::PARAM_STR);
 				$query->bindParam(':workunit_id', $WUID, PDO::PARAM_STR);
 				$query->bindParam(':project_id', $_POST['Project_ID'], PDO::PARAM_STR);
+				$query->execute();
 				echo "Arbeitspaket wurde erstellt, Project ID: " . $_POST['Project_ID'] . "<br>Beschreibung: " . $_POST['WUDescription'] . "<br>Termin: " . $_POST['WUDeadline'] . "<br>";
 			}
 		}
