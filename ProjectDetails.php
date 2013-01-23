@@ -29,8 +29,8 @@ for ($i = 0; $i < $user_query->rowCount(); $i++)
 }
 $workunit_query = $connection->prepare("SELECT * FROM workunits WHERE project_ID = :project_id");
 $workunit_query->bindParam(':project_id', $_GET['id'], PDO::PARAM_STR);
-$assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.ID = :workunit_id AND worker_assignment.job = 3");
 $workunit_query->execute();
+$assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.ID = :workunit_id AND worker_assignment.job = 3");
 for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 {
 	$row = $workunit_query->fetch();
