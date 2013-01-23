@@ -22,12 +22,12 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
     	echo "<th>Termin</th>";
   	echo "</tr>";
 	include "include/PDOConnect.php";
-	$query = $connection->prepare("Select ID, displayname FROM users");
-	$query->execute();
+	$user_query = $connection->prepare("Select ID, displayname FROM users");
+	$user_query->execute();
 	$users = array();
-	for ($i = 0; $i < $query->rowCount(); $i++)
+	for ($i = 0; $i < $user_query->rowCount(); $i++)
 	{
-		$row = $query->fetch();
+		$row = $user_query->fetch();
 		$users[$row['ID']] = $row['displayname'];
 	}
 	$connection = null;
