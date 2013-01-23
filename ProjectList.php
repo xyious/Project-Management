@@ -23,7 +23,6 @@ include "include/PDOConnect.php";
 $query = $connection->prepare("SELECT * FROM project");
 $query->execute();
 $assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.project_ID = :project_id AND workunits.type = 2");
-$workunit_query->execute();
 for ($i = 0; $i < $query->rowCount(); $i++)
 {
 	$row = $query->fetch();
