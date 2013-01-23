@@ -21,14 +21,17 @@ if (!$_SESSION['IP']) {
 <?php
 include "include/PDOConnect.php";
 $workunit_query = $connection->prepare("SELECT * FROM workunits");
-$assignment_query = $connection->prepare("SELECT * FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID WHERE workunits.ID = :workunit_id AND worker_assignment.job = 3");
+$assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.ID = :workunit_id AND worker_assignment.job = 3");
 $workunit_query->execute();
 for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 {
 	$row = $workunit_query->fetch();
+	$assignment_query->bindParam(':workunit_id', $row['ID'], PDO::PARAM_STR);
+	$assignment_query->execute();
+	$assignment_row = $assagnment_query->fetch();
 	echo "<tr><td>" . $row['creation'] . "</td>";
 	echo "<td><a href='WUDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
-	echo "<td>FIX ME</td>";
+	echo "<td>" . $assignment_row['displayname'] . "</td>";
 	echo "<td>" . $row['deadline'] . "</td></tr>";
 }
 ?>
