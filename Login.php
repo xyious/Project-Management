@@ -21,7 +21,7 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 			$Password = trim($_POST['password']);
 			$Hash = create_hash($Password, $Username);
 //			echo $Hash;
-			$query = $connection->prepare("SELECT password FROM users WHERE Username = :Username");
+			$query = $connection->prepare("SELECT ID, password FROM users WHERE Username = :Username");
 			$query->bindParam(':Username', $Username, PDO::PARAM_STR);
 			$query->execute();
 			if ($query->rowCount() != 0) {
@@ -29,6 +29,7 @@ if (!($_SESSION['Logged_In'] && ($_SESSION['IP'] == $_SERVER['REMOTE_ADDR']))) {
 				if (validate_password($Password, $row['password'])) {
 					$NeedLogin = 0;
 					$_SESSION['Logged_In'] = 1;
+					$_SESSION['user_id'] = $row['ID'];
 					echo "Sie sind jetzt eingeloggt!<br>";
 					echo "<a href='" . $_GET['previous'] . "'>Vorherige Seite</a>";
 				} else {
