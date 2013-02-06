@@ -30,6 +30,8 @@ for ($i = 0; $i < $user_query->rowCount(); $i++)
 $workunit_query = $connection->prepare("SELECT * FROM workunits WHERE project_ID = :project_id");
 $workunit_query->bindParam(':project_id', $_GET['id'], PDO::PARAM_STR);
 $workunit_query->execute();
+$WUTable = "";
+$MSTable = ""
 $assignment_query = $connection->prepare("SELECT users.displayname FROM workunits INNER JOIN worker_assignment on workunits.ID = worker_assignment.workunit_ID INNER JOIN users on worker_assignment.user_ID = users.ID WHERE workunits.ID = :workunit_id AND worker_assignment.job = 3");
 for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 {
@@ -37,12 +39,31 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 	$assignment_query->bindParam(':workunit_id', $row['ID'], PDO::PARAM_STR);
 	$assignment_query->execute();
 	$assignment_row = $assignment_query->fetch();
-	echo "<tr><td>" . $row['creation'] . "</td>";
-	echo "<td><a href='WUDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
-	echo "<td>" . $assignment_row['displayname'] . "</td>";
-	echo "<td>" . $row['deadline'] . "</td></tr>";
+	if ($row['type'] == "1") {
+		$WUTable .= "<tr><td>" . $row['creation'] . "</td>";
+		$WUTable .= "<td><a href='WUDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
+		$WUTable .= "<td>" . $assignment_row['displayname'] . "</td>";
+		$WUTable .= "<td>" . $row['deadline'] . "</td></tr>";
+	}
+	if ($row['type'] == "3") {
+		$MSTable .= "<tr><td>" . $row['creation'] . "</td>";
+		$MSTable .= "<td><a href='WUDetails.php?id=" . $row['ID'] . "'>" . $row['description'] . "</a></td>";
+		$MSTable .= "<td>" . $assignment_row['displayname'] . "</td>";
+		$MSTable .= "<td>" . $row['deadline'] . "</td></tr>";
+	}
 }
+echo $WUTable . "</table>";
 ?>
+<br>
+<h2>Arbeitspakete:</h2>
+<table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
+  <tr>
+    <th>Erstellungsdatum</th>
+    <th>Beschreibung</th>
+    <th>Verantwortlicher</th>
+    <th>Termin</th>
+  </tr>
+<?php echo $MSTable; ?>
 </table>
 <br>
 <h2>Arbeitspakete erstellen:</h2>
