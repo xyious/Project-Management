@@ -65,6 +65,8 @@ for ($i = 1; $i < count($users) + 1; $i++)
       <td><input type='date' name='WUDeadline' id='WUDeadline'  maxlength="50" /></td></tr>
   <tr><td><label for='Estimate'>Voraussichtlicher Aufwand (Stunden):</label></td>
       <td><input type='text' name='Estimate' id='Estimate'  maxlength="50" /></td></tr>
+  <tr><td><label for='WUType'>Voraussichtlicher Aufwand (Stunden):</label></td>
+      <td><input type='text' name='WUType' id='WUType'  maxlength="50" value="1" /></td></tr>
     <tr><td>&nbsp;</td><td><input type='submit' name='Submit' value='Submit' /></td>
   </tr>
 </form>
