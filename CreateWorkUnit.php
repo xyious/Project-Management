@@ -27,11 +27,12 @@ if (isset($_POST['submitted']) && $_POST['submitted'] == 1) {
 			$Error++;
 		}
 		if ($Error == 0) {
-			$query = $connection->prepare("INSERT INTO workunits (project_id, deadline, description, estimated_hours, status, type) VALUES (:project_id, :deadline, :description, :estimate, -1, 1)");
+			$query = $connection->prepare("INSERT INTO workunits (project_id, deadline, description, estimated_hours, status, type) VALUES (:project_id, :deadline, :description, :estimate, -1, :type)");
 			$query->bindParam(':project_id', $_POST['Project_ID'], PDO::PARAM_STR);
 			$query->bindParam(':deadline', $_POST['WUDeadline'], PDO::PARAM_STR);
 			$query->bindParam(':description', $_POST['WUDescription'], PDO::PARAM_STR);
 			$query->bindParam(':estimate', $_POST['Estimate'], PDO::PARAM_STR);
+			$query->bindParam(':type', $_POST['WUType'], PDO::PARAM_STR);
 			$query->execute();
 			$WUID = $connection->lastInsertId();
 			if ($WUID > 0) {
