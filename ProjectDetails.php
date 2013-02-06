@@ -55,7 +55,7 @@ for ($i = 0; $i < $workunit_query->rowCount(); $i++)
 echo $WUTable . "</table>";
 ?>
 <br>
-<h2>Arbeitspakete:</h2>
+<h2>Meilensteine:</h2>
 <table rules="all" border="1px" style="width: 100%; border-color: #FFFFFF">
   <tr>
     <th>Erstellungsdatum</th>
